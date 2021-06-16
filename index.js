@@ -28,15 +28,12 @@ app.get('/about', (req, res) => {
 });
 
 app.use(function(req, res, next) {
-    if (res.status(404)) { res.render('404.html') }
+    if (res.status(404)) {
+        res.render('404.html');
+    }
 });
 
 
-// app.get('*', (req, res) => {
-//     if (res.status(404)) {
-//         res.sendFile(path.join(__dirname + '/public/404.html'));
-//     }
-// })
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
