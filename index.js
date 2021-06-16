@@ -27,10 +27,8 @@ app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/about.html'));
 });
 
-app.use(function(req, res, next) {
-    if (res.status(404)) {
-        res.render('404.html');
-    }
+app.use((req, res, next) => {
+    res.status(404).send('<h1> Page not found </h1>');
 });
 
 
