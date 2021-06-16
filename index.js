@@ -2,10 +2,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-
 const app = express();
 
-// app.use(path.join(express.static(__dirname + '/public')));
+var engines = require('consolidate');
+
+app.set('views', __dirname + '/views');
+app.engine('html', engines.mustache);
+app.set('view engine', 'html');
+
+
+app.engine('html', require('ejs').renderFile);
+
+app.use(express.static(path.join(__dirname + '/')));
 
 app.get('/', (req, res) => {
     // res.sendFile(__dirname + "/index.html");
@@ -27,6 +35,10 @@ app.use(function(req, res, next) {
     res.status(404).render('404.html');
 });
 
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/public/404.html'));
+})
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
