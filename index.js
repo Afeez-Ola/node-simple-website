@@ -12,14 +12,13 @@ app.engine('html', require('ejs').renderFile);
 app.use(express.static(path.join(__dirname + '/public')));
 
 app.get('/', (req, res) => {
-    // res.sendFile(__dirname + "/index.html");
+
     res.sendFile(path.join(__dirname + '/public/index.html'));
 
-    // res.render(index);
 });
 
 app.get('/contact-me', (req, res) => {
-    // res.render(contact - me);
+
     res.sendFile(path.join(__dirname + '/public/contact-me.html'));
 
 });
