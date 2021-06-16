@@ -6,14 +6,14 @@ const app = express();
 
 var engines = require('consolidate');
 
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/');
 app.engine('html', engines.mustache);
 app.set('view engine', 'html');
 
 
 app.engine('html', require('ejs').renderFile);
 
-app.use(express.static(path.join(__dirname + '/')));
+app.use(express.static(path.join(__dirname + '/public')));
 
 app.get('/', (req, res) => {
     // res.sendFile(__dirname + "/index.html");
