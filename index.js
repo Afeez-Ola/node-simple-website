@@ -24,9 +24,7 @@ app.get('/about', (req, res) => {
 });
 
 app.use(function(req, res, next) {
-    // res.status(404).render(404);
-    res.status(404).sendFile(path.join(__dirname + '/public/404.html'));
-
+    res.status(404).render('404.html');
 });
 
 const PORT = process.env.PORT || 3000;
