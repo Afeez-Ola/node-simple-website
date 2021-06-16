@@ -7,7 +7,7 @@ const app = express();
 
 
 
-// app.engine('html', require('ejs').renderFile);
+app.engine('html', require('ejs').renderFile);
 
 app.use(express.static(path.join(__dirname + '/public')));
 
@@ -27,16 +27,16 @@ app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/about.html'));
 });
 
-// app.use(function(req, res, next) {
-//     res.status(404).render('404.html');
-// });
+app.use(function(req, res, next) {
+    if (res.status(404)) { res.render('404.html') }
+});
 
 
-app.get('*', (req, res) => {
-    if (res.status(404)) {
-        res.sendFile(path.join(__dirname + '/public/404.html'));
-    }
-})
+// app.get('*', (req, res) => {
+//     if (res.status(404)) {
+//         res.sendFile(path.join(__dirname + '/public/404.html'));
+//     }
+// })
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
