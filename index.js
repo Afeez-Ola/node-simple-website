@@ -6,7 +6,6 @@ const app = express();
 
 
 
-
 app.engine('html', require('ejs').renderFile);
 
 app.use(express.static(path.join(__dirname + '/public')));
@@ -27,7 +26,7 @@ app.get('/about', (req, res) => {
 });
 
 app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname + '/public/404.html'));
+    res.sendFile(path.join(__dirname + '/public/404.html'));
 });
 
 
