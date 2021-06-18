@@ -27,7 +27,7 @@ app.get('/about', (req, res) => {
 
 app.use((req, res, next) => {
     res.sendFile(path.join(__dirname + '/public/404.html'));
-});
+})
 
 
 const PORT = process.env.PORT || 3000;
